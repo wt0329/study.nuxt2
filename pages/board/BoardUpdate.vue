@@ -36,12 +36,7 @@
 
 <script>
 export default {
-    props: {
-      boardId: {
-        type: Number,
-        default: null
-      }
-    },
+    props: ['boardId'],
     data() {
         return {
             board: []
