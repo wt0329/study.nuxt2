@@ -8,31 +8,35 @@
             <table v-if="board" class="table">
                 <tr>
                     <th>ID</th>
-                    <td>{{board.boardId}}</td>
+                    <td>{{boardvo.boardId}}</td>
 
                     <th>구분</th>
-                    <td>{{board.boardCd}}</td>
+                    <td>{{boardvo.boardCd}}</td>
                 </tr>
                 <tr>
                     <th>제목</th>
-                    <td colspan="3">{{board.boardTitle}}</td>
+                    <td colspan="3">{{boardvo.boardTitle}}</td>
                 </tr>
                 <tr>
                     <th>내용</th>
-                    <td colspan="3">{{board.boardCnt}}</td>
+                    <td colspan="3">{{boardvo.boardCnt}}</td>
                 </tr>
-                 <tr v-if="board.fileOgnm !== null">
+                  <template v-if ="board!=null && board.length > 0">
+                    <tr v-for="file in board" :key="file.fileId">
                         <th>첨부파일</th>
                         <td colspan="3">
                             <a :href="`/api/v1/board/${board.fileId}/download`" download>
-                                {{ board.fileOgnm }}
+                                {{ file.fileOgnm }}
                             </a>
                         </td>
-                    </tr>
-                    <tr v-else>
+</tr>
+                  </template>
+                  <template v-else>
+                    <tr>
                         <th>첨부파일</th>
                         <td colspan="3" >등록된 첨부파일이 없습니다.</td>
                     </tr>
+                  </template>
             </table>
           <v-col cols="12" md="5">
                 <v-btn class="mt-2 mr-2" color="primary" @click="updateBoard">수정</v-btn>
@@ -50,6 +54,7 @@ export default {
     props: ['boardId'],
     data() {
         return {
+            boardvo:[],
             board: []
         };
     },
@@ -58,6 +63,7 @@ export default {
         this.$axios.get(`/api/v1/board/${this.boardId}`)
         .then((resp) => {
             this.board = resp.data;
+            this.boardvo=resp.data[0];
             window.console.log(this.board);
         }).catch(() => {
             window.console.error(arguments);

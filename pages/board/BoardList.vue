@@ -26,7 +26,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <template v-if ="boards!=null && boards.length > 1">
+                    <template v-if ="boards!=null && boards.length > 0">
                         <tr v-for="(board, idx) in boards" :key="board.boardId">
                             <td>{{ idx+1 }}</td>
                             <td>{{ board.boardId }}</td>
