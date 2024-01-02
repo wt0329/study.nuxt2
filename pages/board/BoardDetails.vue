@@ -85,7 +85,7 @@ export default {
             }
         },
         updateBoard() {
-            this.$router.push(`/board/BoardUpdate/${this.board.boardId}`);
+            this.$router.push(`/board/BoardUpdate/${this.boardvo.boardId}`);
         }
     }
 };

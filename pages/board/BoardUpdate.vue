@@ -39,13 +39,14 @@ export default {
     props: ['boardId'],
     data() {
         return {
-            board: []
+            board: [],
+
         };
     },
     mounted() {
         this.$axios.get(`/api/v1/board/${this.boardId}`)
         .then((resp) => {
-            this.board = resp.data;
+            this.board = resp.data[0];
             window.console.log(this.board);
         }).catch(() => {
             window.console.error(arguments);
