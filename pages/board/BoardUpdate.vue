@@ -36,11 +36,11 @@
 
 <script>
 export default {
-    props: ['boardId'],
+
     data() {
         return {
             board: [],
-
+            boardId:this.$route.query.boardId
         };
     },
     mounted() {

@@ -51,11 +51,11 @@
 
 <script>
 export default {
-    props: ['boardId'],
     data() {
         return {
             boardvo:[],
-            board: []
+            board: [],
+            boardId:this.$route.query.boardId
         };
     },
 
@@ -85,7 +85,8 @@ export default {
             }
         },
         updateBoard() {
-            this.$router.push(`/board/BoardUpdate/${this.boardvo.boardId}`);
+            this.$router.push({path: `/board/BoardUpdate/`, query:{boardId:this.boardvo.boardId} });
+            //  this.$router.push(`/board/BoardUpdate/${this.boardvo.boardId}`);
         }
     }
 };

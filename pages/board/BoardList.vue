@@ -32,7 +32,7 @@
                             <td>{{ board.boardId }}</td>
                             <td>{{ board.boardCd }}</td>
                             <!-- <td><router-link :to="{path: `/boardDetails/${board.boardId}` }">{{ board.boardTitle }}</router-link></td> -->
-                            <td><nuxt-link :to="{path: `/board/BoardDetails/${board.boardId}` }">{{ board.boardTitle }}</nuxt-link></td>
+                            <td><nuxt-link :to="{path: `/board/BoardDetails`, query:{boardId:board.boardId} }">{{ board.boardTitle }}</nuxt-link></td>
                             <td>{{ board.userNm }}</td>
                         </tr>
                     </template>
