@@ -1,37 +1,41 @@
 <template>
-  <div>
+ <v-container class="d-flex align-center justify-center">
+  <v-card style="width: 50%" height="500" >
+
     <v-form @submit.prevent="submitForm">
-      <v-table>
+      <table class="table">
         <tbody>
          <tr>
             <th>구분</th>
             <td>
-               <input v-model="board.boardCd" placeholder="구분"/>
+              <v-select v-model="board.boardCd" label="구분" :items="selectList" item-text="name" item-value="value">
+              </v-select>
             </td>
           </tr>
           <tr>
             <th>제목</th>
             <td>
-              <input v-model="board.boardTitle" placeholder="제목"/>
+              <v-text-field v-model="board.boardTitle" placeholder="제목"/>
             </td>
           </tr>
           <tr>
             <th>내용</th>
             <td>
-              <input v-model="board.boardCnt" placeholder="내용"/>
+              <v-text-field v-model="board.boardCnt" placeholder="내용"/>
             </td>
           </tr>
             <v-file-input v-model="board.multipartFiles" type="file"  multiple/>
 
         </tbody>
-      </v-table>
+      </table>
       <v-row>
         <v-col cols="12" md="5">
           <v-btn class="mt-2 mr-2" type="button" color="primary" @click="submitForm" >등록</v-btn>
         </v-col>
       </v-row>
     </v-form>
-  </div>
+  </v-card>
+    </v-container>
 </template>
 
 <script>
@@ -44,6 +48,10 @@ export default {
                 boardCnt: "",
                 multipartFiles:[]
             },
+            selectList: [
+                {name: '자유', value: '자유'},
+                {name: '공지', value: '공지'}
+            ]
         };
     },
    methods: {

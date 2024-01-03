@@ -7,20 +7,20 @@
         <v-sheet>
             <v-form @submit.prevent="submitForm">
             <table class="table">
-                <tr>
-                    <th>ID</th>
-                    <td>{{boardId}}</td>
-
-                   <th>구분</th>
-                    <td><input v-model="board.boardCd" placeholder="구분" /></td>
-                </tr>
+            <tr>
+              <th>구분</th>
+              <td>
+                <v-select v-model="board.boardCd" label="구분" :items="selectList" item-text="name" item-value="value">
+                </v-select>
+              </td>
+            </tr>
                 <tr>
                     <th>제목</th>
-                    <td colspan="3"><input v-model="board.boardTitle" placeholder="제목" /></td>
+                    <td colspan="3"><v-text-field v-model="board.boardTitle" placeholder="제목" /></td>
                 </tr>
                 <tr>
                     <th>내용</th>
-                    <td colspan="3"><input v-model="board.boardCnt" placeholder="내용" /></td>
+                    <td colspan="3"><v-text-field v-model="board.boardCnt" placeholder="내용" /></td>
                 </tr>
             </table>
           <v-col cols="12" md="5">
@@ -40,7 +40,11 @@ export default {
     data() {
         return {
             board: [],
-            boardId:this.$route.query.boardId
+            boardId:this.$route.query.boardId,
+            selectList: [
+                {name: "자유", value: "자유"},
+                {name: "공지", value: "공지"}
+            ]
         };
     },
     mounted() {

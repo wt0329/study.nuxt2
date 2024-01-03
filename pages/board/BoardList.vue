@@ -3,7 +3,7 @@
         <v-sheet elevation="1">
             <v-row>
                 <v-col cols="12" md="5">
-                    <v-text-field v-model="srchData.boardCd"  label="구분" density="compact" variant="outlined" ></v-text-field>
+                    <v-select v-model="srchData.boardCd"  label="구분" density="compact" variant="outlined" :items="selectList" item-text="name" item-value="value"></v-select>
                 </v-col>
                <v-col cols="12" md="5">
                     <v-text-field v-model="srchData.keyword"  label="키워드" density="compact" variant="outlined"></v-text-field>
@@ -56,7 +56,10 @@
                    boardCd:'',
                    keyword: ''
                 },
-
+                selectList: [
+                {name: "자유", value: "자유"},
+                {name: "공지", value: "공지"}
+            ]
             }
         },
         mounted() {

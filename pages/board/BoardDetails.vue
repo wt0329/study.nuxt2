@@ -24,12 +24,12 @@
                   <template v-if ="board!=null && board.length > 0">
                     <tr v-for="file in board" :key="file.fileId">
                         <th>첨부파일</th>
-                        <td colspan="3">
+                        <td colspan="12">
                             <a :href="`/api/v1/board/${board.fileId}/download`" download>
                                 {{ file.fileOgnm }}
                             </a>
                         </td>
-</tr>
+                    </tr>
                   </template>
                   <template v-else>
                     <tr>
@@ -42,7 +42,7 @@
                 <v-btn class="mt-2 mr-2" color="primary" @click="updateBoard">수정</v-btn>
                 <v-btn class="mt-2 mr-2" color="primary" @click="deleteBoard">삭제</v-btn>
                 <v-btn class="mt-2 mr-2" color="primary" @click="BoardList">목록</v-btn>
-        </v-col>
+          </v-col>
         </v-sheet>
         </v-card>
     </v-container>
